@@ -1,36 +1,45 @@
 <script setup>
-import HelloWorld from './components/HelloWorld.vue'
-import TheWelcome from './components/TheWelcome.vue'
 </script>
 
 <template>
-  <header>
-    <img alt="Vue logo" class="logo" src="./assets/logo.svg" width="125" height="125" />
-
-    <div class="wrapper">
-      <HelloWorld msg="You did it!" />
-    </div>
-    <div class="grid grid-flow-col grid-rows-2 grid-cols-3 gap-4 ">
-      <div class="bg-slate-500 h-14">
+  <header class="bg-pink-200">
+    <div class="grid m-10 p-2 grid-flow-col grid-rows-2 grid-cols-3 gap-4 bg-gradient-to-br rounded-2xl from-pink-300 to-rose-300">
+      <div class= "h-20 rounded-2xl flex flex-col justify-center items-center bg-slate-50">
         1
       </div>
-      <div class="col-start-3 h-18 bg-pink-300">
+      <div class= "h-20 rounded-2xl flex flex-col justify-center items-center bg-slate-50">
         2
       </div>
-      <div>
+      <div class= "h-20 rounded-2xl flex flex-col justify-center items-center bg-slate-50">
         3
       </div>
-      <div>
+      <div class= "h-20 rounded-2xl flex flex-col justify-center items-center bg-slate-50">
         4
       </div>
-      <div class="row-start-1 col-start-2 col-span-2 bg-gray-400 h-10">
+      <div class= "h-20 rounded-2xl flex flex-col justify-center items-center bg-slate-50">
         6
       </div>
     </div>
   </header>
 
-  <main>
-    <TheWelcome />
+  <main class="bg-gray-200">
+    <div class="grid m-10 p-2 grid-flow-col grid-rows-2 grid-cols-3 gap-4 bg-gradient-to-br rounded-2xl from-pink-300 to-rose-300">
+      <div class= "h-20 rounded-2xl flex flex-col justify-center items-center bg-slate-50">
+        1
+      </div>
+      <div class= "h-20 rounded-2xl flex flex-col justify-center items-center bg-slate-50">
+        2
+      </div>
+      <div class= "h-20 rounded-2xl flex flex-col justify-center items-center bg-slate-50">
+        3
+      </div>
+      <div class= "h-20 rounded-2xl flex flex-col justify-center items-center bg-slate-50">
+        4
+      </div>
+      <div class= "h-20 rounded-2xl flex flex-col justify-center items-center bg-slate-50">
+        6
+      </div>
+    </div>
   </main>
 </template>
 
