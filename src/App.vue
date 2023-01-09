@@ -4,8 +4,26 @@
     let today = new Date().toISOString().substring(0, 10);
     let itemListAll = ref([])
     let allTask = ref([])
+    let initArrItemList = ref([
+      {
+        name: '一个力扣',
+        undo: true,
+        id: Math.random()
+      },
+      {
+        name: '一个ins',
+        undo: true,
+        id: Math.random()
+      },
+      {
+        name: '一个baici',
+        undo: true,
+        id: Math.random()
+      }
+    ])
     if (!date || date !== today) {
       localStorage.setItem('tododate', today)
+      allTask.value = itemListAll.value = initArrItemList.value
     } else {
       if (localStorage.getItem('itemList')) {
         itemListAll.value = JSON.parse(localStorage.getItem('itemList'))
@@ -36,6 +54,10 @@
     const viewCompleted = () => {
       itemListAll.value = allTask.value.filter(item => item.undo === false)
     }
+    const taskCheck = (item) => {
+      item.undo = !item.undo
+      localStorage.setItem("itemList",JSON.stringify(itemListAll.value))
+    }
     // itemList = itemListAll
 </script>
 
@@ -51,8 +73,8 @@
   </header>
 
   <main class="bg-gray-200">
-    <div v-for="item in itemListAll" class="grid m-10 p-4 grid-flow-col text-3xl
-    hover:cursor-pointer hover:from-blue-200 hover:to-rose-300 grid-rows-1 grid-cols-2 gap-2 bg-gradient-to-br rounded-2xl from-pink-300 to-rose-300">
+    <div v-for="item in itemListAll" @click="taskCheck(item)" class="grid m-10 p-4 grid-flow-col text-3xl
+    hover:cursor-pointer hover:from-blue-200 hover:line-through hover:to-rose-300 grid-rows-1 grid-cols-2 gap-2 bg-gradient-to-br rounded-2xl from-pink-300 to-rose-300">
       {{ item.name }}
     </div>
     <div class="grid m-10 p-2 grid-flow-row  grid-rows-1 grid-cols-2 gap-1 bg-gradient-to-br rounded-xl from-pink-300 to-rose-300">
