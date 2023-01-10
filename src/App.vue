@@ -46,18 +46,34 @@
       newjob.value = e.target.value
     }
     const viewTodo = () => {
+      curPage.value = 'todo'
       itemListAll.value = allTask.value.filter(item => item.undo === true)
     }
     const viewAll = () => {
+      curPage.value = 'all'
       itemListAll.value = allTask.value
     }
     const viewCompleted = () => {
+      curPage.value = 'completed'
       itemListAll.value = allTask.value.filter(item => item.undo === false)
     }
     const taskCheck = (item) => {
       item.undo = !item.undo
       localStorage.setItem("itemList",JSON.stringify(itemListAll.value))
     }
+    const curPage = ref('todo')
+
+    const testClass = ref('bg-blue-400')
+    const defaultcss = ref('bg-blue-100')
+    watch(curPage, (val) => {
+      if (val === 'todo') {
+        testClass.value = 'bg-blue-400'
+      } else if (val === 'completed') {
+        testClass.value = 'bg-pink-400'
+      } else if (val === 'all') {
+        testClass.value = 'bg-purple-400'
+      }
+    })
     // itemList = itemListAll
 </script>
 
@@ -66,9 +82,14 @@
     <h1 class="text-2xl text-white">Management <span class="text-blue-400">Task</span></h1>
     <p class="text-white text-md">check your task every day and checked</p>
     <div class="mt-10 overflow-hidden">
-      <button class="bg-blue-400 text-white rounded-lg px-4 py-2 m-2 whitespace-nowrap" @click="viewTodo">Todo</button>
+      <ul class="list-disc">
+        <li :class="curPage === 'todo' ? testClass : defaultcss" class="inline text-white rounded-lg px-4 py-2 m-2" @click="viewTodo">Todo</li>
+        <li :class="curPage === 'completed' ? testClass : defaultcss" class="bg-blue-400 inline text-white rounded-lg px-4 py-2 m-2" @click="viewCompleted">Completed</li> 
+        <li :class="curPage === 'all' ? testClass : defaultcss" class="bg-blue-400 inline text-white rounded-lg px-4 py-2 m-2" @click="viewAll">All task</li> 
+      </ul>
+      <!-- <button class="bg-blue-400 text-white rounded-lg px-4 py-2 m-2 whitespace-nowrap" @click="viewTodo">Todo</button>
       <button class="bg-blue-400 text-white rounded-lg px-4 py-2 m-2 whitespace-nowrap" @click="viewCompleted">Completed</button>
-      <button class="bg-blue-400 text-white rounded-lg px-4 py-2 m-2 whitespace-nowrap" @click="viewAll">All task</button>
+      <button class="bg-blue-400 text-white rounded-lg px-4 py-2 m-2 whitespace-nowrap" @click="viewAll">All task</button> -->
     </div>
   </header>
 
