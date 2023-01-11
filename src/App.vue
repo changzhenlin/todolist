@@ -61,6 +61,11 @@
       item.undo = !item.undo
       localStorage.setItem("itemList",JSON.stringify(itemListAll.value))
     }
+    const taskDelete = (item) => {
+      allTask.value = allTask.value.filter(i => i.id !== item.id)
+      itemListAll.value = itemListAll.value.filter(i => i.id !== item.id)
+      localStorage.setItem("itemList",JSON.stringify(itemListAll.value))
+    }
     const curPage = ref('todo')
 
     const testClass = ref('bg-blue-400')
@@ -94,9 +99,12 @@
   </header>
 
   <main class="bg-gray-200">
-    <div v-for="item in itemListAll" @click="taskCheck(item)" class="grid m-10 p-4 grid-flow-col text-3xl
-    hover:cursor-pointer hover:from-blue-200 hover:line-through hover:to-rose-300 grid-rows-1 grid-cols-2 gap-2 bg-gradient-to-br rounded-2xl from-pink-300 to-rose-300">
-      {{ item.name }}
+    <div v-for="item in itemListAll" @click="taskCheck(item)" class="m-10 p-4 text-3xl flex justify-between
+    hover:cursor-pointer hover:from-blue-200 hover:line-through hover:to-rose-300  gap-2 bg-gradient-to-br rounded-2xl from-pink-300 to-rose-300">
+      <span>
+        {{ item.name }}
+      </span>
+      <button class="h-full w-40 bg-slate-400 mr-2" @click="taskDelete(item)">删除</button>
     </div>
     <div class="grid m-10 p-2 grid-flow-row  grid-rows-1 grid-cols-2 gap-1 bg-gradient-to-br rounded-xl from-pink-300 to-rose-300">
       <input type="text" class="p-1" :value="newjob" @input="handleInput" />
