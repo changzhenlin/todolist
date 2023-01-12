@@ -67,9 +67,11 @@
       localStorage.setItem("itemList",JSON.stringify(itemListAll.value))
     }
     const curPage = ref('todo')
-
     const testClass = ref('bg-blue-400')
     const defaultcss = ref('bg-blue-100')
+    let todocount = allTask.value.filter(item => item.undo === true).length
+    let compledcount = allTask.value.filter(item => item.undo === false).length
+    let allcount = allTask.value.length
     watch(curPage, (val) => {
       if (val === 'todo') {
         testClass.value = 'bg-blue-400'
@@ -88,9 +90,9 @@
     <p class="text-white text-md">check your task every day and checked</p>
     <div class="mt-10 overflow-hidden">
       <ul class="list-disc">
-        <li :class="curPage === 'todo' ? testClass : defaultcss" class="inline text-white rounded-lg px-4 py-2 m-2" @click="viewTodo">Todo</li>
-        <li :class="curPage === 'completed' ? testClass : defaultcss" class="bg-blue-400 inline text-white rounded-lg px-4 py-2 m-2" @click="viewCompleted">Completed</li> 
-        <li :class="curPage === 'all' ? testClass : defaultcss" class="bg-blue-400 inline text-white rounded-lg px-4 py-2 m-2" @click="viewAll">All task</li> 
+        <li :class="curPage === 'todo' ? testClass : defaultcss" class="inline text-white rounded-lg px-4 py-2 m-2" @click="viewTodo">Todo{{ todocount }}</li>
+        <li :class="curPage === 'completed' ? testClass : defaultcss" class="bg-blue-400 inline text-white rounded-lg px-4 py-2 m-2" @click="viewCompleted">Completed{{ compledcount }}</li> 
+        <li :class="curPage === 'all' ? testClass : defaultcss" class="bg-blue-400 inline text-white rounded-lg px-4 py-2 m-2" @click="viewAll">All task{{ allcount }}</li> 
       </ul>
       <!-- <button class="bg-blue-400 text-white rounded-lg px-4 py-2 m-2 whitespace-nowrap" @click="viewTodo">Todo</button>
       <button class="bg-blue-400 text-white rounded-lg px-4 py-2 m-2 whitespace-nowrap" @click="viewCompleted">Completed</button>
