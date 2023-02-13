@@ -29,6 +29,11 @@
         name: '一个commit',
         undo: true,
         id: Math.random()
+      },
+      {
+        name: 'chatgpt',
+        undo: true,
+        id: Math.random()
       }
     ])
     if (!date || date !== today) {
