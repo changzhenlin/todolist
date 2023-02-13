@@ -6,17 +6,27 @@
     let allTask = ref([])
     let initArrItemList = ref([
       {
-        name: '一个力扣',
+        name: '一道力扣',
         undo: true,
         id: Math.random()
       },
       {
-        name: '一个ins',
+        name: '一张ins图',
         undo: true,
         id: Math.random()
       },
       {
-        name: '一个baici',
+        name: '百词斩打卡',
+        undo: true,
+        id: Math.random()
+      },
+      {
+        name: '一条问答',
+        undo: true,
+        id: Math.random()
+      },
+      {
+        name: '一个commit',
         undo: true,
         id: Math.random()
       }
